@@ -5,9 +5,6 @@ const data=require('../data.json');
 
 const productRoutes = express.Router();
 
-
-// Add more routes if needed
-
 module.exports = productRoutes;
 
 //get all products
