@@ -4,7 +4,6 @@ const fs=require('fs');
 //create our express app
 const app=express();
 const port=3000;
-
 //middlewares
 app.use(bodyParser.json());
 
