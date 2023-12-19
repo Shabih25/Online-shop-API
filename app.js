@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 const data=require('./data.json');
  
 app.use('/api',productRoutes);
-app.use('/login', loginRouter)
+app.use('/login', loginRouter);
 app.listen(port,()=>{
     console.log('Server is running on http://localhost:3000');
 });
