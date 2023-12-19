@@ -10,7 +10,7 @@ function authenticate(username,password){
       console.log(password,user.password)
       if (user.username == username && user.password == password) {
         userExists = true;
-        break; // Exit the loop once a match is found
+        break; 
       }
     }
     
