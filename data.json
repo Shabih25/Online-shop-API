@@ -1,4 +1,8 @@
 {
+   "users":[
+    {"id":1,"username":"Jon","password":123},
+    {"id":2,"username":"Jack","password":456}
+   ],
     "products":[
         {"id": 1,"name":"Mobile","price":10000},
         {"id": 2,"name":"Laptop","price":20000},
