@@ -1,7 +1,6 @@
 const path = require('path');
 //const dataPath=path.resolve(__dirname,'data.json');
 const data=require('../data.json');
-
 function authenticate(username,password){
     let userExists = false;
     let user
@@ -34,5 +33,5 @@ function requireAuth(req,res,next){
 
 module.exports = {
     authenticate,
-    requireAuth
+    requireAuth,
 };
