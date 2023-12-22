@@ -5,7 +5,7 @@ const {authenticate} = require('./middleware/middleware.js');
 const {requireAuth} = require('./middleware/middleware.js'); 
 const productRoutes=require('./routes/products.js');
 const loginRouter = require("./routes/login.js");
-
+const bcrypt=require('bcrypt');
 //create our express app
 const app=express();
 const port=3000;
@@ -13,11 +13,10 @@ const port=3000;
 app.use(bodyParser.json());
 const data=require('./data.json');
 app.use('/api',productRoutes);
-app.use('/login', loginRouter);
+app.use(loginRouter);
 app.get('/api/cart',requireAuth,(req,res)=>{
     res.json(req.user.cart);
 });
-
 //add product
 app.post('/api/cart/:productId',requireAuth,(req,res)=>{
     const productId=parseInt(req.params.productId);

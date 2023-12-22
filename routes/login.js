@@ -1,16 +1,44 @@
 const express = require('express');
+const fs=require('fs/promises')
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 const {authenticate} = require("../middleware/middleware.js")
-const loginRouter = express.Router()
+const router = express.Router()
 
-loginRouter.post('/',(req,res)=>{
-    const{username,password}=req.body;
+router.post('/signup',async (req,res)=>{
+    try{
+        const {username,email,password}=req.body;
+        const hash = bcrypt.hashSync(password, saltRounds);
+        const data=await fs.readFile('./data.json','utf8');
+        const fileData=JSON.parse(data);
+        fileData.users.push({username,email,hash})
+        const newFile=JSON.stringify(fileData);
+        await fs.writeFile('./data.json',newFile);
+        return res.json({message:"New user added successfully"})
 
-    const user=authenticate(username,password);
-    if(user){
-        res.json({message:'Login successful',user});
-    }else{
-        res.status(401).json({error:'invalid credentials'});
+
+    }catch(e){
+        return res.json(e.message)
     }
 });
 
-module.exports= loginRouter
+router.post('/signin',async (req,res)=>{
+    try{
+        const{email,password}=req.body;
+        const data= await fs.readFile('./data.json','utf8');
+        const fileData=JSON.parse(data);
+        const user=fileData.users.find(user =>user.email===email && bcrypt.compareSync(password, user.password));
+        
+        if(user){
+            return res.json({message:"User logged in successfully"});
+        }else{
+            return res.status(401).json({error:"Invalid email or password"});
+        }
+        }catch(e){
+        return res.status(500).json({error:e.message});
+        }
+});
+
+
+
+module.exports= router
