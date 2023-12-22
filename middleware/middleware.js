@@ -1,4 +1,5 @@
 const path = require('path');
+const bcrypt = require ('bcrypt');
 //const dataPath=path.resolve(__dirname,'data.json');
 const data=require('../data.json');
 async function requireAuth(req,res,next){

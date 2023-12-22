@@ -2,18 +2,21 @@
 const express = require('express');
 const { requireAuth } = require('../middleware/middleware.js');
 const data=require('../data.json');
-
+const fs = require("fs")
 const productRoutes = express.Router();
 
 module.exports = productRoutes;
 
 //get all products
-productRoutes.get('/products',requireAuth,(req,res)=>{
-    res.json(data.products);
+productRoutes.get('/products',(req,res)=>{
+    const dataBuffer = fs.readFileSync('./data.json');
+    let dataJSON = dataBuffer.toString();
+    dataJSON = JSON.parse(dataJSON);
+    res.json(dataJSON.products);
 });
 
 //get a single product by ID
-productRoutes.get('/products/:id',requireAuth,(req,res)=>{
+productRoutes.get('/products/:id',(req,res)=>{
     const productId=parseInt(req.params.id);
     const product=data.products.find(p => p.id === productId);
 

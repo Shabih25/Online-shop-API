@@ -27,9 +27,9 @@ router.post('/signin',async (req,res)=>{
         const{email,password}=req.body;
         const data= await fs.readFile('./data.json','utf8');
         const fileData=JSON.parse(data);
-        const user=fileData.users.find(user =>user.email===email && bcrypt.compareSync(password, user.password));
+        const user=fileData.users.find(user =>user.email===email);
         
-        if(user){
+        if(user  && bcrypt.compareSync(password, user.hash)){
             return res.json({message:"User logged in successfully"});
         }else{
             return res.status(401).json({error:"Invalid email or password"});
