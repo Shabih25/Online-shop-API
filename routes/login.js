@@ -1,8 +1,8 @@
 const express = require('express');
 const fs=require('fs/promises')
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const saltRounds = 10;
-const {authenticate} = require("../middleware/middleware.js")
+const {authenticate} = require("../middleware/authentication.js")
 const router = express.Router()
 
 router.post('/signup',async (req,res)=>{

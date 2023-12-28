@@ -1,11 +1,11 @@
 const express=require('express');
 const bodyParser=require('body-parser');
 const fs=require('fs');
-const {authenticate} = require('./middleware/middleware.js');
-const {requireAuth} = require('./middleware/middleware.js'); 
+const {authenticate} = require('./middleware/authentication.js');
+const {requireAuth} = require('./middleware/authentication.js'); 
 const productRoutes=require('./routes/products.js');
 const loginRouter = require("./routes/login.js");
-const bcrypt=require('bcrypt');
+const bcrypt=require('bcryptjs');
 //create our express app
 const app=express();
 const port=3000;
@@ -42,7 +42,25 @@ app.delete('/api/cart/:productId',requireAuth,(req,res)=>{
         const removeProduct=req.user.cart.splice(index,1);
         res.json(removeProduct[0]);
     }
-})
+});
+// Pagination
+app.get('/api/p', (req, res) => {
+    console.log(req.query.pageSize)
+    console.log(req.query.page)
+   const page = parseInt(req.query.page) || 1;
+    const pageSize = parseInt(req.query.pageSize) || 10;
+    const startIndex = (page - 1) * pageSize;
+    const endIndex = page * pageSize;
+  
+    const paginatedData = data.products.slice(startIndex, endIndex);
+  
+    res.json({
+      data: paginatedData,
+      totalPages: Math.ceil(data.products.length / pageSize),
+    });
+  });
+
+  
 app.listen(port,()=>{
     console.log('Server is running on http://localhost:3000');
 });

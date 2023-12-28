@@ -1,6 +1,6 @@
 // routes/products.js
 const express = require('express');
-const { requireAuth } = require('../middleware/middleware.js');
+const { requireAuth } = require('../middleware/authentication.js');
 const data=require('../data.json');
 const fs = require("fs")
 const productRoutes = express.Router();
@@ -59,3 +59,6 @@ productRoutes.delete('/products/:id',requireAuth,(req,res)=>{
         res.json(deletedProduct[0]);
     }
 });
+
+
+  
