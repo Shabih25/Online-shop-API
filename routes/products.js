@@ -59,6 +59,24 @@ productRoutes.delete('/products/:id',requireAuth,(req,res)=>{
         res.json(deletedProduct[0]);
     }
 });
+// ...
+
+// Patch operation to partially update a product by ID
+productRoutes.patch('/products/:id',  (req, res) => {
+    console.log('PATCH request received');
+    const productId = parseInt(req.params.id);
+    const updatedFields = req.body;
+    
+    const index = data.products.findIndex(p => p.id === productId);
+
+    if (index === -1) {
+        res.status(404).json({ error: 'Product not found' });
+    } else {
+        // Update only the specified fields
+        data.products[index] = { ...data.products[index], ...updatedFields };
+        res.json(data.products[index]);
+    }
+});
 
 
   

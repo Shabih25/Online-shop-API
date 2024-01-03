@@ -19,29 +19,29 @@ router.get('/users', async (req, res) => {
     }
 });
 
-// router.post('/users', async (req, res) => {
-//     try {
-//         const { username, password } = req.body;
-//         const saltRounds = 10;
-//         const hash = await bcrypt.hash(password, saltRounds);
+ router.post('/users', async (req, res) => {
+     try {
+         const { username, password } = req.body;
+         const saltRounds = 10;
+         const hash = await bcrypt.hash(password, saltRounds);
 
-//         const data = await fs.readFile(dataPath, 'utf8');
-//         const fileData = JSON.parse(data);
+         const data = await fs.readFile(dataPath, 'utf8');
+         const fileData = JSON.parse(data);
 
-//         const newUser = {
-//             id: fileData.users.length + 1,
-//             username,
-//             password: hash,
-//         };
+         const newUser = {
+             id: fileData.users.length + 1,
+             username,
+             password: hash,
+         };
 
-//         fileData.users.push(newUser);
-//         await fs.writeFile(dataPath, JSON.stringify(fileData));
+         fileData.users.push(newUser);
+         await fs.writeFile(dataPath, JSON.stringify(fileData));
 
-//         res.json({ id: newUser.id, username: newUser.username });
-//     } catch (error) {
-//         res.status(500).json({ error: error.message });
-//     }
-// });
+         res.json({ id: newUser.id, username: newUser.username });
+     } catch (error) {
+        res.status(500).json({ error: error.message });
+     }
+ });
 
 router.put('/users/:id', async (req, res) => {
     try {
@@ -93,4 +93,34 @@ router.delete('/users/:id', async (req, res) => {
     }
 });
 
+// PATCH operation to partially update a user by ID
+router.patch('/users/:id', async (req, res) => {
+    try {
+        const userId = parseInt(req.params.id);
+        const updatedFields = req.body;
+
+        const data = await fs.readFile(dataPath, 'utf8');
+        const fileData = JSON.parse(data);
+
+        const index = fileData.users.findIndex(user => user.id === userId);
+
+        if (index === -1) {
+            res.status(404).json({ error: 'User not found' });
+        } else {
+            // Update only the specified fields
+            const user = fileData.users[index];
+            user.username = updatedFields.username || user.username;
+
+            if (updatedFields.password) {
+                const saltRounds = 10;
+                user.password = await bcrypt.hash(updatedFields.password, saltRounds);
+            }
+
+            await fs.writeFile(dataPath, JSON.stringify(fileData));
+            res.json({ id: user.id, username: user.username });
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
 module.exports = router;

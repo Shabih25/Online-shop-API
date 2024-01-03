@@ -62,41 +62,31 @@ app.get('/api/p', (req, res) => {
       totalPages: Math.ceil(data.products.length / pageSize),
     });
   });
-// Example using Express.js
-app.get('/api/p', (req, res) => {
-    const page = parseInt(req.query.page) || 1;
-    const pageSize = parseInt(req.query.pageSize) || 10;
-    const sortBy = req.query.sortBy || 'id';
-    const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
+  app.get('/api/products', (req, res) => {
+    // Default sorting by name
+    let sortedProducts = [...data.products];
 
-    const startIndex = (page - 1) * pageSize;
-    const endIndex = page * pageSize;
-
-    // Assuming your data structure is an array of products
-    const sortedData = data.products.slice().sort((a, b) => {
-        if (sortBy === 'price'){
-        console.log('Sorted and Paginated Data:', paginatedData); 
-            return (parseFloat(a.price) - parseFloat(b.price)) * sortOrder;
-        } 
-        else{
-            // Default sorting by id for other criteria
-            return (a.id - b.id) * sortOrder;
-           
+    // Check for sorting query parameter
+    if (req.query.sortBy === 'price') {
+        if (req.query.sortOrder === 'desc') {
+            sortedProducts.sort((a, b) => {
+                console.log('Sorting in descending order:', b.price, a.price);
+                return b.price - a.price;
+            });
+        } else {
+            sortedProducts.sort((a, b) => {
+                console.log('Sorting in ascending order:', a.price, b.price);
+                return a.price - b.price;
+            });
         }
-    });
+    }
 
-    const paginatedData = sortedData.slice(startIndex, endIndex);
-
-    res.json({
-        data: paginatedData,
-        totalPages: Math.ceil(sortedData.length / pageSize),
-    });
+    res.json(sortedProducts);
 });
 
 
 
 
-  
-app.listen(port,()=>{
-    console.log('Server is running on http://localhost:3000');
+  app.listen(3000, () => {
+    console.log(`Server is running on http://localhost:3000`);
 });
