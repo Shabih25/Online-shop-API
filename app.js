@@ -62,31 +62,6 @@ app.get('/api/p', (req, res) => {
       totalPages: Math.ceil(data.products.length / pageSize),
     });
   });
-  app.get('/api/products', (req, res) => {
-    // Default sorting by name
-    let sortedProducts = [...data.products];
-
-    // Check for sorting query parameter
-    if (req.query.sortBy === 'price') {
-        if (req.query.sortOrder === 'desc') {
-            sortedProducts.sort((a, b) => {
-                console.log('Sorting in descending order:', b.price, a.price);
-                return b.price - a.price;
-            });
-        } else {
-            sortedProducts.sort((a, b) => {
-                console.log('Sorting in ascending order:', a.price, b.price);
-                return a.price - b.price;
-            });
-        }
-    }
-
-    res.json(sortedProducts);
-});
-
-
-
-
   app.listen(3000, () => {
     console.log(`Server is running on http://localhost:3000`);
 });
