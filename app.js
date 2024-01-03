@@ -5,6 +5,7 @@ const {authenticate} = require('./middleware/authentication.js');
 const {requireAuth} = require('./middleware/authentication.js'); 
 const productRoutes=require('./routes/products.js');
 const loginRouter = require("./routes/login.js");
+const usersRouter = require('./routes/users');
 const bcrypt=require('bcryptjs');
 //create our express app
 const app=express();
@@ -14,9 +15,11 @@ app.use(bodyParser.json());
 const data=require('./data.json');
 app.use('/api',productRoutes);
 app.use(loginRouter);
+app.use('/api',usersRouter);
 app.get('/api/cart',requireAuth,(req,res)=>{
     res.json(req.user.cart);
 });
+
 //add product
 app.post('/api/cart/:productId',requireAuth,(req,res)=>{
     const productId=parseInt(req.params.productId);
@@ -47,7 +50,7 @@ app.delete('/api/cart/:productId',requireAuth,(req,res)=>{
 app.get('/api/p', (req, res) => {
     console.log(req.query.pageSize)
     console.log(req.query.page)
-   const page = parseInt(req.query.page) || 1;
+    const page = parseInt(req.query.page) || 1;
     const pageSize = parseInt(req.query.pageSize) || 10;
     const startIndex = (page - 1) * pageSize;
     const endIndex = page * pageSize;
@@ -59,6 +62,36 @@ app.get('/api/p', (req, res) => {
       totalPages: Math.ceil(data.products.length / pageSize),
     });
   });
+// Example using Express.js
+app.get('/api/p', (req, res) => {
+    const page = parseInt(req.query.page) || 1;
+    const pageSize = parseInt(req.query.pageSize) || 10;
+    const sortBy = req.query.sortBy || 'id';
+    const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
+
+    const startIndex = (page - 1) * pageSize;
+    const endIndex = page * pageSize;
+
+    // Assuming your data structure is an array of products
+    const sortedData = data.products.slice().sort((a, b) => {
+        if (sortBy === 'price'){
+        console.log('Sorted and Paginated Data:', paginatedData); 
+            return (parseFloat(a.price) - parseFloat(b.price)) * sortOrder;
+        } 
+        else{
+            // Default sorting by id for other criteria
+            return (a.id - b.id) * sortOrder;
+           
+        }
+    });
+
+    const paginatedData = sortedData.slice(startIndex, endIndex);
+
+    res.json({
+        data: paginatedData,
+        totalPages: Math.ceil(sortedData.length / pageSize),
+    });
+});
 
   
 app.listen(port,()=>{

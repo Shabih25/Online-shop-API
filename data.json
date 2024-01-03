@@ -4,7 +4,6 @@
             "id": 3,
             "username": "shabih",
             "hash": "$2b$10$8YWKqFT6ej9X3RqA/6YQSuId2JxSCplFiJnYaPeACauGYKNgW95DG"
-            
         },
         {
             "id": 4,
@@ -42,37 +41,44 @@
         {
             "id": 1,
             "name": "Mobile",
-            "price": 10000
+            "price": 10000,
+            "isDeleted":false
         },
         {
             "id": 2,
             "name": "Laptop",
-            "price": 20000
+            "price": 20000,
+            "isDeleted":false
         },
         {
             "id": 3,
             "name": "TV",
-            "price": 15000
+            "price": 15000,
+            "isDeleted":false
         },
         {
             "id": 4,
             "name": "Refigerator",
-            "price": 20000
+            "price": 20000,
+            "isDeleted":false
         },
         {
             "id": 5,
             "name": "Hair straightner",
-            "price": 900
+            "price": 900,
+            "isDeleted":false
         },
         {
             "id": 6,
             "name": "Trimmer",
-            "price": 500
+            "price": 500,
+            "isDeleted":false
         },
         {
             "id": 7,
             "name": "Microwave",
-            "price": 1500
+            "price": 1500,
+            "isDeleted":false
         }
     ]
 }
