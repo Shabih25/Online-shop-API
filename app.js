@@ -46,22 +46,7 @@ app.delete('/api/cart/:productId',requireAuth,(req,res)=>{
         res.json(removeProduct[0]);
     }
 });
-// Pagination
-app.get('/api/p', (req, res) => {
-    console.log(req.query.pageSize)
-    console.log(req.query.page)
-    const page = parseInt(req.query.page) || 1;
-    const pageSize = parseInt(req.query.pageSize) || 10;
-    const startIndex = (page - 1) * pageSize;
-    const endIndex = page * pageSize;
-  
-    const paginatedData = data.products.slice(startIndex, endIndex);
-  
-    res.json({
-      data: paginatedData,
-      totalPages: Math.ceil(data.products.length / pageSize),
-    });
-  });
+
 app.listen(3000, () => {
     console.log(`Server is running on http://localhost:3000`);
 });

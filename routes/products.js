@@ -12,7 +12,27 @@ productRoutes.get('/products',(req,res)=>{
     const dataBuffer = fs.readFileSync('./data.json');
     let dataJSON = dataBuffer.toString();
     dataJSON = JSON.parse(dataJSON);
-    res.json(dataJSON.products);
+    
+    const { pageNo, pageSize, sort } = req.query;
+    let sortedData = dataJSON.products;
+
+    if (sort === 'asc') {
+        sortedData = sortedData.sort((a, b) => a.price - b.price);
+    } else if (sort === 'desc') {
+        sortedData = sortedData.sort((a, b) => b.price - a.price);
+    }
+
+        
+    const startIndex = (pageNo - 1) * pageSize;
+    const endIndex = pageNo * pageSize;
+  
+    const paginatedData = dataJSON.products.slice(startIndex, endIndex);
+  
+    res.json({
+      data: paginatedData,
+      totalPages: Math.ceil(data.products.length / pageSize),
+      
+    });
 });
 
 //get a single product by ID

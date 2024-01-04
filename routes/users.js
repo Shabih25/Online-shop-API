@@ -9,15 +9,38 @@ const path = require('path');
 
 const dataPath = path.resolve(__dirname, '../data.json');
 
+
 router.get('/users', async (req, res) => {
     try {
         const data = await fs.readFile(dataPath, 'utf8');
-        const users = JSON.parse(data).users.map(user => ({ id: user.id, username: user.username }));
-        res.json(users);
+        const jsonData = JSON.parse(data);
+
+        // Pagination
+        const { pageNo = 1, pageSize = 3, sort } = req.query;
+        const startIndex = (pageNo - 1) * pageSize;
+        const endIndex = pageNo * pageSize;
+        let paginatedUsers = jsonData.users.slice(startIndex, endIndex);
+
+        // Sorting
+        if (sort === 'asc') {
+            paginatedUsers = paginatedUsers.sort((a, b) => a.username.localeCompare(b.username));
+        } else if (sort === 'desc') {
+            paginatedUsers = paginatedUsers.sort((a, b) => b.username.localeCompare(a.username));
+        }
+
+        // Extracting relevant user information
+        const users = paginatedUsers.map(user => ({ id: user.id, username: user.username }));
+
+        res.json({
+            data: users,
+            totalPages: Math.ceil(jsonData.users.length / pageSize),
+        });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
+
+   
 
  router.post('/users', async (req, res) => {
      try {
