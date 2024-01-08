@@ -8,8 +8,6 @@ const path = require('path');
 
 
 const dataPath = path.resolve(__dirname, '../data.json');
-
-
 router.get('/users', async (req, res) => {
     try {
         const data = await fs.readFile(dataPath, 'utf8');

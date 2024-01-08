@@ -8,30 +8,26 @@ const productRoutes = express.Router();
 module.exports = productRoutes;
 
 //get all products
-productRoutes.get('/products',(req,res)=>{
-    const dataBuffer = fs.readFileSync('./data.json');
-    let dataJSON = dataBuffer.toString();
-    dataJSON = JSON.parse(dataJSON);
-    
+productRoutes.get('/products', (req, res) => {
     const { pageNo, pageSize, sort } = req.query;
-    let sortedData = dataJSON.products;
 
+    let sortedData = [...data.products];
+
+    // Check for sorting query parameter
     if (sort === 'asc') {
         sortedData = sortedData.sort((a, b) => a.price - b.price);
     } else if (sort === 'desc') {
         sortedData = sortedData.sort((a, b) => b.price - a.price);
     }
 
-        
     const startIndex = (pageNo - 1) * pageSize;
     const endIndex = pageNo * pageSize;
-  
-    const paginatedData = dataJSON.products.slice(startIndex, endIndex);
-  
+
+    const paginatedData = sortedData.slice(startIndex, endIndex);
+
     res.json({
-      data: paginatedData,
-      totalPages: Math.ceil(data.products.length / pageSize),
-      
+        data: paginatedData,
+        totalPages: Math.ceil(sortedData.length / pageSize),
     });
 });
 
@@ -75,8 +71,10 @@ productRoutes.delete('/products/:id',requireAuth,(req,res)=>{
     if(index===-1){
         res.status(404).json({error:'Product not found'});
     }else{
+        //soft delete
+        data.products[index].isDeleted = true;
         const deletedProduct=data.products.splice(index,1);
-        res.json(deletedProduct[0]);
+        res.json({ id: productId, message: 'Soft deleted successfully' });
     }
 });
 // ...

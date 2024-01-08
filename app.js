@@ -6,6 +6,7 @@ const {requireAuth} = require('./middleware/authentication.js');
 const productRoutes=require('./routes/products.js');
 const loginRouter = require("./routes/login.js");
 const usersRouter = require('./routes/users');
+const adminRouter=require('./routes/admin');
 const bcrypt=require('bcryptjs');
 //create our express app
 const app=express();
@@ -16,6 +17,8 @@ const data=require('./data.json');
 app.use('/api',productRoutes);
 app.use(loginRouter);
 app.use('/api',usersRouter);
+app.use('/api',adminRouter);
+//get
 app.get('/api/cart',requireAuth,(req,res)=>{
     res.json(req.user.cart);
 });
