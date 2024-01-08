@@ -3,16 +3,19 @@
         {
             "id": 1,
             "username": "shabih",
+            "email": "shabih123@gmail.com",
             "hash": "$2b$10$8YWKqFT6ej9X3RqA/6YQSuId2JxSCplFiJnYaPeACauGYKNgW95DG"
         },
         {
             "id": 2,
             "username": "Jill",
+            "email": "jill12@gmail.com",
             "hash": "$2b$10$HZ7F3TWN/zvz5DW9qrcPQ.Q2yMB9JV6vFCnOS4fxr14lMiOyLWQ4u"
         },
         {
             "id": 3,
             "username": "Jin",
+            "email": "jinn12@gmail.com",
             "hash": "$2b$10$VLBIYdPjhkGrLqBPaJOcuulISiNgDZHz9TNVRVQi1..6A5prX2Rxa"
         },
         {
@@ -32,6 +35,174 @@
             "username": "Siri",
             "password": "$2b$10$pYKphvIHgUi6nmpz9hMY5uQSW4caUFxaOSMaI4uwZC2wVmR9J4GjS"
         },
+            {
+                "id": 7,
+                "username": "john_doe",
+                "email": "john.doe@example.com",
+                "hash": "$2b$10$R4zPvyJ4iMXJNUHTyCn0sOQyZk9j0CGfrCxLODgbPUS6VKo4Ms3Zi"
+            },
+            {
+                "id": 8,
+                "username": "alice_smith",
+                "email": "alice.smith@example.com",
+                "hash": "$2b$10$F0PCAxL74tXfFzZxuAfrwOu9xLWTImfZyYAV.GxFVbIQE1fi1/NXi"
+            },
+            {
+                "id": 9,
+                "username": "bob_jones",
+                "email": "bob.jones@example.com",
+                "hash": "$2b$10$TPxkKgf8aNy/OnPqC6zAn.bj5TQY5aTfAyn.b8cAsCdlyzvqN2HKC"
+            },
+            {
+                "id": 10,
+                "username": "james_carter",
+                "email": "james.carter@example.com",
+                "hash": "$2b$10$bu4T5l4wRW/nrSGGth7I/evjbexfL2b/jdEl9MQDow9GzSHb.IkgG"
+            },
+            {
+                "id": 11,
+                "username": "emily_johnson",
+                "email": "emily.johnson@example.com",
+                "hash": "$2b$10$SnrLfcAK6kfDVQVgav2pouu4GkEnP/7mVgl41UzCvTPe3J0sN2XMm"
+            },
+            {
+                "id": 12,
+                "username": "samuel_hall",
+                "email": "samuel.hall@example.com",
+                "hash": "$2b$10$V0LlDIBAKsmJc.FVFF2xTOHHsD/lXIdhVZP7.k.L/A7F.wZqJoBk2"
+            },
+            {
+                "id": 13,
+                "username": "olivia_wilson",
+                "email": "olivia.wilson@example.com",
+                "hash": "$2b$10$0D.n3P8X5ifJ.WP8zElsT.qQh7KszITubu3f7iGdG0QZhLZnXN3zi"
+            },
+            {
+                "id": 14,
+                "username": "benjamin_brown",
+                "email": "benjamin.brown@example.com",
+                "hash": "$2b$10$X/Xz6fDvEBiQxvvMhVCBReXt.dFq3o7CT5CErG07zWU5NS6kJ4Gya"
+            },
+            {
+                "id": 15,
+                "username": "natalie_davis",
+                "email": "natalie.davis@example.com",
+                "hash": "$2b$10$ZyezDjoaR6HsM/RnsztyLuTOhOfAm2.3GOoR4U8Uv.RixwYnYJLXm"
+            },
+            {
+                "id": 16,
+                "username": "william_clark",
+                "email": "william.clark@example.com",
+                "hash": "$2b$10$9IOM2.6z2MP19/DzDlqgsu/cjT3qCDGQYZg1sCZquZV0rDTgPmH/a"
+            },
+            {
+                "id": 17,
+                "username": "grace_jones",
+                "email": "grace.jones@example.com",
+                "hash": "$2b$10$prF8e6Cvmc4S1s9dczJx5OKuEHJTpPtG9zShym2LiqZ4Ko3GSUie6"
+            },
+            {
+                "id": 18,
+                "username": "daniel_smith",
+                "email": "daniel.smith@example.com",
+                "hash": "$2b$10$VvPjIH9vZ8uL9JF88XUVo.Ua6fAYcRNV6IzEBPSwG.ycDWyfATZ2u"
+            },
+            {
+                "id": 19,
+                "username": "amelia_martin",
+                "email": "amelia.martin@example.com",
+                "hash": "$2b$10$Z3fEqJw9iBEfQG9Dpm.jqu1P9OgFyFCf6h/xw2SZzIgJZjS9aUqjC"
+            },
+            {
+                "id": 20,
+                "username": "jacob_miller",
+                "email": "jacob.miller@example.com",
+                "hash": "$2b$10$tF47m09nJQFWAPUc0uNV5.WC.kG4J5.Fu2l8dRBB5mpJQNH16cBvy"
+            },
+            {
+                "id": 21,
+                "username": "mia_thomas",
+                "email": "mia.thomas@example.com",
+                "hash": "$2b$10$HM9AfOKwOHrxJuvuIgCn7OFSMvx9yq0dtIIfBuplUpNVbHEzML3fu"
+            },
+            {
+                "id": 22,
+                "username": "charlie_jackson",
+                "email": "charlie.jackson@example.com",
+                "hash": "$2b$10$3FJNJ7mACiSdfoCr.Z.LiepqMJRmE6eTw0OxSWFcoCVjzrxXmS0mu"
+            },
+            {
+                "id": 23,
+                "username": "oliver_lee",
+                "email": "oliver.lee@example.com",
+                "hash": "$2b$10$06WQkQ2atc.zyTosmSfe1eUil0yERnRO2L2CCVtVrWqG3erGSsG0O"
+            },
+            {
+                "id": 24,
+                "username": "mia_thompson",
+                "email": "mia.thompson@example.com",
+                "hash": "$2b$10$RVXKUBhJdOaOjACHeJYig.9Rvz8wCzq8w2HgPvxxD8TbsRfcjCWca"
+            },
+            {
+                "id": 25,
+                "username": "ethan_carter",
+                "email": "ethan.carter@example.com",
+                "hash": "$2b$10$Yq5vRBZpyR4CBYgNr/gCEuvjA1uYqgVTRqmW0irrp7vSR0tnHctNi"
+            },
+            {
+                "id": 26,
+                "username": "olivia_perez",
+                "email": "olivia.perez@example.com",
+                "hash": "$2b$10$QaCE4N2Kvq/SXlUBUT0.Pel6R2Mq1M05d8DVT4TDuZs1.zVcw1VJu"
+            },
+            {
+                "id": 27,
+                "username": "jack_gomez",
+                "email": "jack.gomez@example.com",
+                "hash": "$2b$10$XdTnsz4vaRUmO8EC1N2aZO/0I8SsIaD2qlhnVpWXNff0qTlR6YwPe"
+            },
+            {
+                "id": 28,
+                "username": "mia_cook",
+                "email": "mia.cook@example.com",
+                "hash": "$2b$10$q3vz0jvjgrFLi9n1cQdQJu0RroS1gLeHjzliOKx7uGudNlccDgbrm"
+            },
+            {
+                "id": 29,
+                "username": "logan_garcia",
+                "email": "logan.garcia@example.com",
+                "hash": "$2b$10$eCKWJ6nLFU3vxuh8dxlYLuTTuIaAF/G8cZH7QQNQ1M6E4qBXlwyca"
+            },
+            {
+                "id": 30,
+                "username": "ava_wilson",
+                "email": "ava.wilson@example.com",
+                "hash": "$2b$10$f7lsfH3xol.PTlrL2HP.4.v.6NtEF2qMg1hae6IbM8.z8zCR06mLu"
+            },
+            {
+                "id": 31,
+                "username": "luke_hill",
+                "email": "luke.hill@example.com",
+                "hash": "$2b$10$utdAvypp/tBwDRmL6PVDxuB6wU1S6mR4ihbnd.rRgRrIMaHz/FMUy"
+            },
+            {
+                "id": 32,
+                "username": "elena_morris",
+                "email": "elena.morris@example.com",
+                "hash": "$2b$10$EdIXL1.dN8vVn4LGIsPAxOMWU2qg9cThS2DvG8ghvXsSyuNzJr9Zy"
+            },
+            {
+                "id": 33,
+                "username": "aiden_wright",
+                "email": "aiden.wright@example.com",
+                "hash": "$2b$10$yizf0ZcFJ8STLxRdrzEqCOOKoZHh6bKJ.1iheLbrYQpQ7qELpucMy"
+            },
+            {
+                "id": 34,
+                "username": "scarlett_king",
+                "email": "scarlett.king@example.com",
+                "hash": "$2b$10$98hA1u1u.PALNO9k5I8jfuWulHcOo4oD.2szuPNAtPj9a7bQZbY6y"
+            },
         {
             "id": 1,
             "username": "Jacky",
@@ -95,6 +266,168 @@
             "id": 7,
             "name": "Microwave",
             "price": 1500,
+            "isDeleted": false
+        },
+        {
+            "id": 8,
+            "name": "Smartwatch",
+            "price": 8000,
+            "isDeleted": false
+        },
+        {
+            "id": 9,
+            "name": "Bluetooth Earbuds",
+            "price": 1200,
+            "isDeleted": false
+        },
+        {
+            "id": 10,
+            "name": "Digital Camera",
+            "price": 18000,
+            "isDeleted": false
+        },
+        {
+            "id": 11,
+            "name": "Gaming Console",
+            "price": 25000,
+            "isDeleted": false
+        },
+        {
+            "id": 12,
+            "name": "Fitness Tracker",
+            "price": 1500,
+            "isDeleted": false
+        },
+        {
+            "id": 13,
+            "name": "Desk Chair",
+            "price": 7000,
+            "isDeleted": false
+        },
+        {
+            "id": 14,
+            "name": "Coffee Maker",
+            "price": 1200,
+            "isDeleted": false
+        },
+        {
+            "id": 15,
+            "name": "Wireless Keyboard",
+            "price": 2500,
+            "isDeleted": false
+        },
+        {
+            "id": 16,
+            "name": "External Hard Drive",
+            "price": 4000,
+            "isDeleted": false
+        },
+        {
+            "id": 17,
+            "name": "Sunglasses",
+            "price": 800,
+            "isDeleted": false
+        },
+        {
+            "id": 18,
+            "name": "Backpack",
+            "price": 1200,
+            "isDeleted": false
+        },
+        {
+            "id": 19,
+            "name": "Bluetooth Speaker",
+            "price": 1500,
+            "isDeleted": false
+        },
+        {
+            "id": 20,
+            "name": "Headphones",
+            "price": 2000,
+            "isDeleted": false
+        },
+        {
+            "id": 21,
+            "name": "Air Purifier",
+            "price": 8000,
+            "isDeleted": false
+        },
+        {
+            "id": 22,
+            "name": "Vacuum Cleaner",
+            "price": 3000,
+            "isDeleted": false
+        },
+        {
+            "id": 23,
+            "name": "Blender",
+            "price": 1500,
+            "isDeleted": false
+        },
+        {
+            "id": 24,
+            "name": "Smart Thermostat",
+            "price": 7000,
+            "isDeleted": false
+        },
+        {
+            "id": 25,
+            "name": "Gaming Mouse",
+            "price": 1000,
+            "isDeleted": false
+        },
+        {
+            "id": 26,
+            "name": "Wireless Charger",
+            "price": 500,
+            "isDeleted": false
+        },
+        {
+            "id": 27,
+            "name": "Yoga Mat",
+            "price": 600,
+            "isDeleted": false
+        },
+        {
+            "id": 28,
+            "name": "Portable Monitor",
+            "price": 4000,
+            "isDeleted": false
+        },
+        {
+            "id": 29,
+            "name": "Instant Pot",
+            "price": 8000,
+            "isDeleted": false
+        },
+        {
+            "id": 30,
+            "name": "Toaster Oven",
+            "price": 2500,
+            "isDeleted": false
+        },
+        {
+            "id": 31,
+            "name": "Electric Toothbrush",
+            "price": 1000,
+            "isDeleted": false
+        },
+        {
+            "id": 32,
+            "name": "Smart Doorbell",
+            "price": 12000,
+            "isDeleted": false
+        },
+        {
+            "id": 33,
+            "name": "Wireless Router",
+            "price": 3000,
+            "isDeleted": false
+        },
+        {
+            "id": 34,
+            "name": "Sunscreen",
+            "price": 15,
             "isDeleted": false
         }
     ]

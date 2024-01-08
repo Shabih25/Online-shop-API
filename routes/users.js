@@ -42,7 +42,7 @@ router.get('/users', async (req, res) => {
 
  router.post('/users', async (req, res) => {
      try {
-         const { username, password } = req.body;
+         const { username, password,email } = req.body;
          const saltRounds = 10;
          const hash = await bcrypt.hash(password, saltRounds);
 
@@ -52,6 +52,7 @@ router.get('/users', async (req, res) => {
          const newUser = {
              id: fileData.users.length + 1,
              username,
+             email,
              password: hash,
          };
 
@@ -79,6 +80,7 @@ router.put('/users/:id', async (req, res) => {
         } else {
             const user = fileData.users[index];
             user.username = username || user.username;
+            user.email = email || user.email;
 
             if (password) {
                 const saltRounds = 10;
@@ -86,7 +88,7 @@ router.put('/users/:id', async (req, res) => {
             }
 
             await fs.writeFile(dataPath, JSON.stringify(fileData));
-            res.json({ id: user.id, username: user.username });
+            res.json({ id: user.id, username: user.username,email:user.email });
         }
     } catch (error) {
         res.status(500).json({ error: error.message });
