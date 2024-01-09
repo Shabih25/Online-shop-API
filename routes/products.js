@@ -2,6 +2,7 @@
 const express = require('express');
 const { requireAuth } = require('../middleware/authentication.js');
 const data=require('../data.json');
+const jwt = require('jsonwebtoken');
 const fs = require("fs")
 const productRoutes = express.Router();
 
@@ -64,21 +65,27 @@ productRoutes.put('/products/:id',requireAuth,(req,res)=>{
     }
 });
 //deleting a product by Id
-productRoutes.delete('/products/:id',requireAuth,(req,res)=>{
+productRoutes.delete('/products/:id', requireAuth, async (req, res) => {
     console.log('DELETE request received');
-    const productId=parseInt(req.params.id);
-    const index=data.products.findIndex(p=>p.id===productId);
-    if(index===-1){
-        res.status(404).json({error:'Product not found'});
-    }else{
-        //soft delete
-        data.products[index].isDeleted = true;
-        const deletedProduct=data.products.splice(index,1);
-        res.json({ id: productId, message: 'Soft deleted successfully' });
+    const productId = parseInt(req.params.id);
+
+    try {
+        // Find the product by ID
+        const product = data.products.find(p => p.id === productId);
+
+        if (!product) {
+            res.status(404).json({ error: 'Product not found' });
+        } else {
+            // Soft delete by marking as "isDeleted: true"
+            product.isDeleted = true;
+            fs.writeFileSync("./data.json", JSON.stringify(data,null,2))
+            console.log(data,"ggghghghgh")
+            res.json({ id: productId, message: 'Soft deleted successfully' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
 });
-// ...
-
 // Patch operation to partially update a product by ID
 productRoutes.patch('/products/:id',  (req, res) => {
     console.log('PATCH request received');
