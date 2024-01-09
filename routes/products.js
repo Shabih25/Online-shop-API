@@ -102,6 +102,35 @@ productRoutes.patch('/products/:id',  (req, res) => {
         res.json(data.products[index]);
     }
 });
+// Purchase a product by ID
+productRoutes.post('/products/:id/purchase', async (req, res) => {
+    console.log('PURCHASE request received');
+    const productId = parseInt(req.params.id);
+    const { quantity } = req.body;
+
+    try {
+        // Find the product by ID
+        const product = data.products.find(p => p.id === productId);
+
+        if (!product) {
+            res.status(404).json({ error: 'Product not found' });
+        } else {
+            // Check if there is enough quantity available
+            if (product.quantity >= quantity) {
+                // Update the quantity and save the change
+                product.quantity -= quantity;
+
+                await saveProducts(data.products);
+                res.json({ id: productId, message: 'Purchase successful', remainingQuantity: product.quantity });
+            } else {
+                res.status(400).json({ error: 'Not enough stock available' });
+            }
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+async function saveProducts(products){}
 
 
   

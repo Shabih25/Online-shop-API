@@ -230,205 +230,239 @@
       "id": 1,
       "name": "Mobile",
       "price": 10000,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 2,
       "name": "Laptop",
       "price": 20000,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 3,
       "name": "TV",
       "price": 15000,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 4,
       "name": "Refigerator",
       "price": 20000,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 5,
       "name": "Hair straightner",
       "price": 900,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 6,
       "name": "Trimmer",
       "price": 500,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 7,
       "name": "Microwave",
       "price": 1500,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 8,
       "name": "Smartwatch",
       "price": 8000,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 9,
       "name": "Bluetooth Earbuds",
       "price": 1200,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 10,
       "name": "Digital Camera",
       "price": 18000,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 11,
       "name": "Gaming Console",
       "price": 25000,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 12,
       "name": "Fitness Tracker",
       "price": 1500,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 13,
       "name": "Desk Chair",
       "price": 7000,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 14,
       "name": "Coffee Maker",
       "price": 1200,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 15,
       "name": "Wireless Keyboard",
       "price": 2500,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 16,
       "name": "External Hard Drive",
       "price": 4000,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 17,
       "name": "Sunglasses",
       "price": 800,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 18,
       "name": "Backpack",
       "price": 1200,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 19,
       "name": "Bluetooth Speaker",
       "price": 1500,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 20,
       "name": "Headphones",
       "price": 2000,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 21,
       "name": "Air Purifier",
       "price": 8000,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 22,
       "name": "Vacuum Cleaner",
       "price": 3000,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 23,
       "name": "Blender",
       "price": 1500,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 24,
       "name": "Smart Thermostat",
       "price": 7000,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 25,
       "name": "Gaming Mouse",
       "price": 1000,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 26,
       "name": "Wireless Charger",
       "price": 500,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 27,
       "name": "Yoga Mat",
       "price": 600,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 28,
       "name": "Portable Monitor",
       "price": 4000,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 29,
       "name": "Instant Pot",
       "price": 8000,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 30,
       "name": "Toaster Oven",
       "price": 2500,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 31,
       "name": "Electric Toothbrush",
       "price": 1000,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 32,
       "name": "Smart Doorbell",
       "price": 12000,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 33,
       "name": "Wireless Router",
       "price": 3000,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     },
     {
       "id": 34,
       "name": "Sunscreen",
       "price": 15,
-      "isDeleted": false
+      "isDeleted": false,
+      "quantity": 50
     }
   ]
 }
