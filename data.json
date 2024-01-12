@@ -223,6 +223,11 @@
       "email": "sana12@gmail.com",
       "password": "$2b$10$fF8d6xM1ynPNKF/6QaqoyuVq20erfdy3gIVdmVns2jB7YkLmrX9WW",
       "isAdmin": true
+    },
+    {
+      "username": "furqan",
+      "email": "furqan23@gmail.com",
+      "hash": "$2a$10$xUhmY231wMDbuyS94lUPS.lmSkdc4jMBMIdcVJbf5SV3uknMJNr8y"
     }
   ],
   "products": [
