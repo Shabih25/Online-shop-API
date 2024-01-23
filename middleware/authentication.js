@@ -1,48 +1,62 @@
-const path = require('path');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const data = require('../data.json');
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const { User } = require("../models"); // Assuming you've exported your User model
 
 async function requireAuth(req, res, next) {
-    const { username, password } = req.headers;
+  const token = req.headers.authorization;
 
-    try {
-        const user = await authenticate(username, password);
-
-        if (user) {
-            req.user = user;
-
-            // Attach the token to the response headers
-            const token = generateToken(user);
-            res.setHeader('Authorization', `Bearer ${token}`);
-
-            next();
-        } else {
-            res.status(401).json({ error: 'Unauthorized' });
-        }
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
+  try {
+    if (!token) {
+      return res.status(401).json({ error: "Unauthorized - Token missing" });
     }
+
+    const decodedToken = jwt.verify(
+      token.replace("Bearer ", ""),
+      "your-secret-key"
+    );
+
+    const user = await authenticate(
+      decodedToken.username,
+      decodedToken.password
+    );
+    if (user) {
+      req.user = user;
+
+      // Attach the token to the response headers
+      const token = generateToken(user);
+      res.setHeader("Authorization", `Bearer ${token}`);
+
+      next();
+    } else {
+      res.status(401).json({ error: "Unauthorized" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 }
 
 function generateToken(user) {
-    // Replace 'your-secret-key' with a strong, unique secret key for JWT
-    const secretKey = 'your-secret-key';
-    const token = jwt.sign({ userId: user.id, username: user.username }, secretKey, { expiresIn: '1h' });
-    return token;
+  // Replace 'your-secret-key' with a strong, unique secret key for JWT
+  const secretKey = "your-secret-key";
+  const token = jwt.sign(
+    { userId: user.id, username: user.username },
+    secretKey
+  );
+  return token;
 }
 
 async function authenticate(username, password) {
-    const user = data.users.find(u => u.username === username);
-  console.log(user)
-    if (user && (await bcrypt.compare(password, user.hash))) {
-        return user;
-    }
-    return null;
+  const user = await User.findOne({ where: { username } });
+
+  //   if (user && (await bcrypt.compare(password, user.password))) {
+  //     return user;
+  //   }
+  if (user) return user;
+  return null;
 }
 
 module.exports = {
-    authenticate,
-    requireAuth,
+  authenticate,
+  requireAuth,
 };

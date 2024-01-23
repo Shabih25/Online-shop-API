@@ -4,6 +4,7 @@ const { requireAuth } = require("../middleware/authentication.js");
 const data = require("../data.json");
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
+const { Product } = require("../models/index.js");
 const productRoutes = express.Router();
 
 module.exports = productRoutes;
@@ -48,12 +49,21 @@ productRoutes.get("/products/:id", (req, res) => {
   }
 });
 //creating a new product
-productRoutes.post("/products", requireAuth, (req, res) => {
-  console.log("POST request received");
-  const newProduct = req.body;
-  //validating the input before adding it to data
-  data.products.push(newProduct);
-  res.json(newProduct);
+productRoutes.post("/products", requireAuth, async (req, res) => {
+  try {
+    console.log("POST request received");
+    const newProduct = req.body;
+
+    const createdProduct = await Product.create(newProduct);
+
+    res.status(201).json({
+      id: createdProduct.id,
+      name: createdProduct.name,
+      price: createdProduct.price,
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 //update a product by ID
 productRoutes.put("/products/:id", requireAuth, (req, res) => {

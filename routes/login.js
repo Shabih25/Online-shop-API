@@ -5,72 +5,56 @@ const saltRounds = 10;
 const { authenticate } = require("../middleware/authentication.js");
 const router = express.Router();
 const path = require("path");
+const jwt = require("jsonwebtoken");
+const { User } = require("../models/index.js");
 
 const dataPath = path.resolve(__dirname, "../data.json");
 router.get("/admin", (req, res) => {
   res.send("Admin Panel");
 });
 
-router.post("/login", async (req, res) => {
-  try {
-    const { username, password } = req.body;
-    const data = await fs.readFile(dataPath, "utf8");
-    const fileData = JSON.parse(data);
-
-    // Find the admin user by username
-    const adminUser = fileData.users.find(
-      (user) => user.username === username && user.isAdmin
-    );
-
-    if (!adminUser) {
-      res.status(401).json({ error: "Invalid credentials" });
-      return;
-    }
-
-    // Compare the provided password with the hashed password in the data
-    const passwordMatch = await bcrypt.compare(password, adminUser.password);
-
-    if (!passwordMatch) {
-      res.status(401).json({ error: "Invalid credentials" });
-      return;
-    }
-
-    // If the credentials are valid, send a success response
-    res.json({ message: "Admin login successful" });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
+//create a new user
 router.post("/signup", async (req, res) => {
   try {
     const { username, password } = req.body;
     const hash = bcrypt.hashSync(password, saltRounds);
-    const data = await fs.readFile("./data.json", "utf8");
-    const fileData = JSON.parse(data);
-    fileData.users.push({ username, hash });
-    const newFile = JSON.stringify(fileData);
-    await fs.writeFile("./data.json", newFile);
+
+    await User.create({ username, password: hash });
+
     return res.json({ message: "New user added successfully" });
-  } catch (e) {
-    return res.json(e.message);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
+//Login to get JWT.
 router.post("/signin", async (req, res) => {
   try {
     const { username, password } = req.body;
-    const data = await fs.readFile("./data.json", "utf8");
-    const fileData = JSON.parse(data);
-    const user = fileData.users.find((user) => user.username === username);
 
-    if (user && bcrypt.compareSync(password, user.hash)) {
-      return res.json({ message: "User logged in successfully" });
+    console.log(username, password);
+
+    const user = await User.findOne({ where: { username } });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found!" });
+    }
+
+    const secretKey = "your-secret-key";
+    const token = jwt.sign(
+      { userId: user.id, username: user.username },
+      secretKey
+    );
+
+    if (user && bcrypt.compareSync(password, user.password)) {
+      return res.json({ message: "User logged in successfully", jwt: token });
     } else {
       return res.status(401).json({ error: "Invalid username or password" });
     }
-  } catch (e) {
-    return res.status(500).json({ error: e.message });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 });
 

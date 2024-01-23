@@ -5,6 +5,7 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const fs = require("fs/promises");
 const path = require("path");
+const { User } = require("../models");
 
 const dataPath = path.resolve(__dirname, "../data.json");
 router.get("/users", async (req, res) => {
@@ -44,25 +45,18 @@ router.get("/users", async (req, res) => {
   }
 });
 
+//create a new user
 router.post("/users", async (req, res) => {
   try {
     const { username, password } = req.body;
     const saltRounds = 10;
     const hash = await bcrypt.hash(password, saltRounds);
+    const newUser = await User.create({ username, password: hash });
 
-    const data = await fs.readFile(dataPath, "utf8");
-    const fileData = JSON.parse(data);
-
-    const newUser = {
-      id: fileData.users.length + 1,
-      username,
-      password: hash,
-    };
-
-    fileData.users.push(newUser);
-    await fs.writeFile(dataPath, JSON.stringify(fileData));
-
-    res.json({ id: newUser.id, username: newUser.username });
+    res.status(201).json({
+      id: newUser.id,
+      username: newUser.username,
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
