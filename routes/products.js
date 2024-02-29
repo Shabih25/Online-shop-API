@@ -38,9 +38,15 @@ productRoutes.get("/products", (req, res) => {
 });
 
 //get a single product by ID
-productRoutes.get("/products/:id", (req, res) => {
+productRoutes.get("/products/:id", async (req, res) => {
   const productId = parseInt(req.params.id);
-  const product = data.products.find((p) => p.id === productId);
+
+  const product = await Product.findAll({
+    where: {
+      id: productId,
+    },
+  });
+  console.log(product);
 
   if (!product) {
     res.status(404).json({ error: "Product not found" });

@@ -174,12 +174,6 @@
       "hash": "$2b$10$eCKWJ6nLFU3vxuh8dxlYLuTTuIaAF/G8cZH7QQNQ1M6E4qBXlwyca"
     },
     {
-      "id": 30,
-      "username": "ava_wilson",
-      "email": "ava.wilson@example.com",
-      "hash": "$2b$10$f7lsfH3xol.PTlrL2HP.4.v.6NtEF2qMg1hae6IbM8.z8zCR06mLu"
-    },
-    {
       "id": 31,
       "username": "luke_hill",
       "email": "luke.hill@example.com",
@@ -228,6 +222,12 @@
       "username": "furqan",
       "email": "furqan23@gmail.com",
       "hash": "$2a$10$xUhmY231wMDbuyS94lUPS.lmSkdc4jMBMIdcVJbf5SV3uknMJNr8y"
+    },
+    {
+      "id": 39,
+      "username": "khansa",
+      "password": "$2b$10$eL3mMvfTGN4eVJNUxBXi9.UFuh/kRZ2vGlki4849RBBzCH6jxUTs6",
+      "isAdmin": true
     }
   ],
   "products": [
